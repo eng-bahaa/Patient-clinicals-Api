@@ -1,0 +1,40 @@
+# Build output
+target/
+build/
+out/
+bin/
+
+# IDE specific files
+.idea/
+*.iml
+*.ipr
+*.iws
+.classpath
+.project
+.settings/
+.vscode/
+*.sw*
+*.bak
+
+# Log files
+*.log
+logs/
+
+# Environment files
+.env
+application*.properties
+application*.yml
+application*.yaml
+
+# Dependency management (Gradle)
+.gradle/
+
+# Maven
+pom.xml.versionsBackup
+dependency-reduced-pom.xml
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
