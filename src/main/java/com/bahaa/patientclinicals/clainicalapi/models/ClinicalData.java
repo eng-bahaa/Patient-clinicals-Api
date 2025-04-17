@@ -4,11 +4,16 @@ import java.sql.Timestamp;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -30,6 +35,10 @@ public class ClinicalData {
 	@CreationTimestamp
 	private Timestamp measuredDateTime;
 	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "patient_id", insertable = false, updatable = false)
+	@JsonIgnore
+	private Patient patient;
 
 	public ClinicalData() {
 		// TODO Auto-generated constructor stub
@@ -97,6 +106,14 @@ public class ClinicalData {
 		return "ClinicalData [id=" + id + ", patientId=" + patientId + ", componentId=" + componentId
 				+ ", componentName=" + componentName + ", componentValue=" + componentValue + ", measuredDateTime="
 				+ measuredDateTime + "]";
+	}
+
+	public Patient getPatient() {
+		return patient;
+	}
+
+	public void setPatient(Patient patient) {
+		this.patient = patient;
 	}
 
 }

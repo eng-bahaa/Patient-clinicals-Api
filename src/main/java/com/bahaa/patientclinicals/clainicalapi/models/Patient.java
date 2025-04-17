@@ -1,15 +1,20 @@
 package com.bahaa.patientclinicals.clainicalapi.models;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "paitent")
-public class Paitent {
+@Table(name = "patient")
+public class Patient {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,11 +29,22 @@ public class Paitent {
 	@Column(name = "age", nullable = false)
 	private int age;
 
-	public Paitent() {
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "patient")
+	private List<ClinicalData> clinicalData;
+
+	public List<ClinicalData> getClinicalData() {
+		return clinicalData;
+	}
+
+	public void setClinicalData(List<ClinicalData> clinicalData) {
+		this.clinicalData = clinicalData;
+	}
+
+	public Patient() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Paitent(String firstName, String lastName, int age) {
+	public Patient(String firstName, String lastName, int age) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
