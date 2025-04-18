@@ -22,10 +22,8 @@ public class ClinicalData {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-
 	@Column(name = "patient_id", nullable = false)
-	private int patientId;
+	private Long patientId;
 	@Column(name = "component_id", nullable = false)
 	private int componentId;
 	@Column(name = "component_name", nullable = false)
@@ -44,7 +42,7 @@ public class ClinicalData {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ClinicalData(int patientId, int componentId, String componentName, String componentValue,
+	public ClinicalData(Long patientId, int componentId, String componentName, String componentValue,
 			Timestamp measuredDateTime) {
 		this.patientId = patientId;
 		this.componentId = componentId;
@@ -53,19 +51,11 @@ public class ClinicalData {
 		this.measuredDateTime = measuredDateTime;
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public int getPatientId() {
+	public Long getPatientId() {
 		return patientId;
 	}
 
-	public void setPatientId(int patientId) {
+	public void setPatientId(Long patientId) {
 		this.patientId = patientId;
 	}
 
@@ -103,7 +93,7 @@ public class ClinicalData {
 
 	@Override
 	public String toString() {
-		return "ClinicalData [id=" + id + ", patientId=" + patientId + ", componentId=" + componentId
+		return "ClinicalData [patientId=" + patientId + ", componentId=" + componentId
 				+ ", componentName=" + componentName + ", componentValue=" + componentValue + ", measuredDateTime="
 				+ measuredDateTime + "]";
 	}
