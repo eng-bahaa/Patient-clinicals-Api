@@ -24,47 +24,29 @@ public class ClinicalData {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "patient_id", nullable = false)
 	private Long patientId;
-	@Column(name = "component_id", nullable = false)
-	private int componentId;
+
 	@Column(name = "component_name", nullable = false)
 	private String componentName;
+
 	@Column(name = "component_value", nullable = false)
 	private String componentValue;
+
+	@Column(name = "measured_date_time", nullable = false)
 	@CreationTimestamp
 	private Timestamp measuredDateTime;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "patient_id", insertable = false, updatable = false)
 	@JsonIgnore
 	private Patient patient;
 
-	public ClinicalData() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public ClinicalData(Long patientId, int componentId, String componentName, String componentValue,
-			Timestamp measuredDateTime) {
-		this.patientId = patientId;
-		this.componentId = componentId;
-		this.componentName = componentName;
-		this.componentValue = componentValue;
-		this.measuredDateTime = measuredDateTime;
-	}
-
+//  Getters and Setters
 	public Long getPatientId() {
 		return patientId;
 	}
 
 	public void setPatientId(Long patientId) {
 		this.patientId = patientId;
-	}
-
-	public int getComponentId() {
-		return componentId;
-	}
-
-	public void setComponentId(int componentId) {
-		this.componentId = componentId;
 	}
 
 	public String getComponentName() {
@@ -91,19 +73,18 @@ public class ClinicalData {
 		this.measuredDateTime = measuredDateTime;
 	}
 
-	@Override
-	public String toString() {
-		return "ClinicalData [patientId=" + patientId + ", componentId=" + componentId
-				+ ", componentName=" + componentName + ", componentValue=" + componentValue + ", measuredDateTime="
-				+ measuredDateTime + "]";
-	}
-
 	public Patient getPatient() {
 		return patient;
 	}
 
 	public void setPatient(Patient patient) {
 		this.patient = patient;
+	}
+
+	@Override
+	public String toString() {
+		return "ClinicalData [patientId=" + patientId + ", componentName="
+				+ componentName + ", componentValue=" + componentValue + ", measuredDateTime=" + measuredDateTime + "]";
 	}
 
 }
