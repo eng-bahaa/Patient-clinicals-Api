@@ -32,25 +32,7 @@ public class Patient {
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "patient")
 	private List<ClinicalData> clinicalData;
 
-	public List<ClinicalData> getClinicalData() {
-		return clinicalData;
-	}
-
-	public void setClinicalData(List<ClinicalData> clinicalData) {
-		this.clinicalData = clinicalData;
-	}
-
-	public Patient() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public Patient(String firstName, String lastName, int age) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.age = age;
-	}
-
+//	Getters and Setters 
 	public Long getId() {
 		return id;
 	}
@@ -81,6 +63,14 @@ public class Patient {
 
 	public void setAge(int age) {
 		this.age = age;
+	}
+
+	public List<ClinicalData> getClinicalData() {
+		return clinicalData;
+	}
+
+	public void setClinicalData(List<ClinicalData> clinicalData) {
+		this.clinicalData = clinicalData;
 	}
 
 	@Override
