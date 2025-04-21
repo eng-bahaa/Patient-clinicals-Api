@@ -8,5 +8,6 @@ import com.bahaa.patientclinicals.clainicalapi.models.Patient;
 @Repository
 public interface PatientRepository extends JpaRepository<Patient, Long> {
 
-
+	// Find patients by first and last name
+	List<Patient> findByFirstNameAndLastName(String firstName, String lastName);
 }
